@@ -1,7 +1,18 @@
+# Configuração da linguagem Java 8 e 11
 language: java
-sudo: true
-dist: trusty
 jdk:
   - openjdk8
+  - openjdk11
+
+dist: trusty
+
+# Veja https://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure
+sudo: false
+
 before_install:
   - chmod +x mvnw
+
+# Armazena em cache as dependencias do Maven  
+cache:
+  directories:
+  - $HOME/.m2
