@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+    <img src="../assets/img/icone-onibus.png" alt="Fretado-App" width="28,72" height="39,20">
+  
+    <button mat-button [matMenuTriggerFor]="menuCadastro">Cadastros</button>
+    <button mat-button [matMenuTriggerFor]="menuParametro">Parâmetros</button>
+    <button mat-button [matMenuTriggerFor]="menuRelatorio">Relatórios</button>
+    
+    <mat-menu #menuCadastro="matMenu" color="primary">
+      <a mat-menu-item routerLink="/cadastro/linha" routerLinkActive="active-link">Linha</a>
+      <a mat-menu-item routerLink="/cadastro/motorista" routerLinkActive="active-link">Motorista</a>
+    </mat-menu>
+    
+    <mat-menu #menuParametro="matMenu" color="primary">
+      <a mat-menu-item routerLink="/parametro/aplicacao" routerLinkActive="active-link">Aplicação</a>
+    </mat-menu>
+  
+    <mat-menu #menuRelatorio="matMenu" color="primary">
+      <a mat-menu-item routerLink="/relatorio/linhas-cadastradas" routerLinkActive="active-link">Linhas Cadastradas</a>
+      <a mat-menu-item routerLink="/relatorio/motoristas-cadastrados" routerLinkActive="active-link">Motoristas Cadastrados</a>
+    </mat-menu>
+    
+</mat-toolbar>
