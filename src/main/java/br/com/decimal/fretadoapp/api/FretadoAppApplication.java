@@ -8,6 +8,8 @@ public class FretadoAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FretadoAppApplication.class, args);
+		
+		System.out.println("Passei aqqui");
 	}
 
 }
