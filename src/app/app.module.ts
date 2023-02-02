@@ -28,7 +28,7 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    CadastroModule
+    CadastroModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

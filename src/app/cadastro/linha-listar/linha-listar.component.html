@@ -1,1 +1,43 @@
-<p>linha-listar works!</p>
+<mat-form-field>
+    <input matInput [(ngModel)]="descricao" placeholder="descricao">
+</mat-form-field>
+
+<mat-form-field>
+    <input matInput [(ngModel)]="codigoLinha" placeholder="codigoLinha">
+</mat-form-field>
+
+<mat-form-field>
+    <mat-select [(ngModel)]="situacao" placeholder="situacao">
+        <mat-option value=1>Ativo</mat-option>
+        <mat-option value=0>Inativo</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<button mat-raised-button (click)="addLineItem()">Add</button>
+
+<div class="example-container mat-elevation-z8">
+    
+    <mat-table [dataSource]="dataSource" matSort>
+        
+        <ng-container matColumnDef="codigoLinha">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Código Linha</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.codigoLinha}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descricao">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.descricao}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="situacao">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Situação</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.situacao}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+
+</div>
