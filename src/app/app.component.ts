@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'fretado-app';
   isAuthenticated = false;
+
+  constructor() {
+    console.log(environment.production); // Logs false for development environment
+  }
 
   login() {
     this.isAuthenticated = true;

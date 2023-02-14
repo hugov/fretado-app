@@ -15,29 +15,32 @@
 
 <button mat-raised-button (click)="addLineItem()">Add</button>
 
-<div class="example-container mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort>
     
-    <mat-table [dataSource]="dataSource" matSort>
-        
-        <ng-container matColumnDef="codigoLinha">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Código Linha</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.codigoLinha}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+        <td mat-cell *matCellDef="let item" data-label="id" class="custom-cell">{{item.id}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="descricao">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.descricao}}</mat-cell>
-        </ng-container>
+    <!---->
 
-        <ng-container matColumnDef="situacao">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Situação</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.situacao}}</mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="codigoLinha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Código Linha</th>
+        <td mat-cell *matCellDef="let item" data-label="codigoLinha" class="custom-cell">{{item.codigoLinha}}</td>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+        <td mat-cell *matCellDef="let item" data-label="descricao" class="custom-cell">{{item.descricao}}</td>
+    </ng-container>
 
-    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    <ng-container matColumnDef="situacao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Situação</th>
+        <td mat-cell *matCellDef="let item" data-label="situacao" class="custom-cell">{{item.situacao}}</td>
+    </ng-container>
 
-</div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
