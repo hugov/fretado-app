@@ -15,8 +15,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-
-import { ParametroAplicacaoService } from './parametro/parametro-aplicacao.service';
+import { DataService } from './service/data.service';
 
 @NgModule({
   declarations: [
@@ -34,8 +33,7 @@ import { ParametroAplicacaoService } from './parametro/parametro-aplicacao.servi
     MatMenuModule,
     CadastroModule,
     HttpClientModule,
-    environment.production ?
-      HttpClientInMemoryWebApiModule.forRoot(ParametroAplicacaoService, { delay: 100 }) : []
+    HttpClientInMemoryWebApiModule.forRoot(DataService)
   ],
   providers: [],
   bootstrap: [AppComponent]

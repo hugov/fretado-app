@@ -10,12 +10,14 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class LinhaService {
 
-  private productsUrl = 'api/linha/';
+  private linhaUrl = 'api/linhas/';
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    console.log('Carregando o serviço de linha')
+  }
 
   getLinhas(): Observable<Linha[]> {
-    return this.http.get<Linha[]>(this.productsUrl).pipe(
+    return this.http.get<Linha[]>(this.linhaUrl).pipe(
       retry(2),
       catchError((error: HttpErrorResponse) => {
         console.error(error);

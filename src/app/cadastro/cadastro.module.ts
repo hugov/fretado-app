@@ -27,6 +27,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ],
+  exports: [LinhaListarComponent]
 })
 export class CadastroModule { }

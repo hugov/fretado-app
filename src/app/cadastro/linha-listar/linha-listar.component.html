@@ -1,13 +1,13 @@
 <mat-form-field>
-    <input matInput [(ngModel)]="descricao" placeholder="descricao">
+    <input matInput [(ngModel)]="linha.descricao" placeholder="descricao">
 </mat-form-field>
 
 <mat-form-field>
-    <input matInput [(ngModel)]="codigoLinha" placeholder="codigoLinha">
+    <input matInput [(ngModel)]="linha.codigoLinha" placeholder="codigoLinha">
 </mat-form-field>
 
 <mat-form-field>
-    <mat-select [(ngModel)]="situacao" placeholder="situacao">
+    <mat-select [(ngModel)]="linha.situacao" placeholder="situacao">
         <mat-option value=1>Ativo</mat-option>
         <mat-option value=0>Inativo</mat-option>
     </mat-select>
