@@ -18,29 +18,29 @@
 <table mat-table [dataSource]="dataSource" matSort>
     
     <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
-        <td mat-cell *matCellDef="let item" data-label="id" class="custom-cell">{{item.id}}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+        <mat-cell *matCellDef="let item" data-label="id" class="custom-cell">{{item.id}}</mat-cell>
     </ng-container>
 
     <!---->
 
     <ng-container matColumnDef="codigoLinha">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Código Linha</th>
-        <td mat-cell *matCellDef="let item" data-label="codigoLinha" class="custom-cell">{{item.codigoLinha}}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Código Linha</mat-header-cell>
+        <mat-cell *matCellDef="let item" data-label="codigoLinha" class="custom-cell">{{item.codigoLinha}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="descricao">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
-        <td mat-cell *matCellDef="let item" data-label="descricao" class="custom-cell">{{item.descricao}}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
+        <mat-cell *matCellDef="let item" data-label="descricao" class="custom-cell">{{item.descricao}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="situacao">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Situação</th>
-        <td mat-cell *matCellDef="let item" data-label="situacao" class="custom-cell">{{item.situacao}}</td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Situação</mat-header-cell>
+        <mat-cell *matCellDef="let item" data-label="situacao" class="custom-cell">{{item.situacao}}</mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
 </table>
 
 <!--

@@ -12,29 +12,18 @@ export class LinhaService {
 
   private linhaUrl = 'api/linhas/';
 
-  httpOptions = {
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'No-Auth': 'True',
-    }),
-  };
-  
   constructor(private http: HttpClient) { 
     console.log('Carregando o serviço de linha')
   }
 
   getLinhas(): Observable<Linha[]> {
-
-    let reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'No-Auth': 'True' });
-    /*
-    return this.http.get(this.linhaUrl, { headers: reqHeader })
-    .subscribe((resp: any) => {
-      console.log(resp);
-    }, err => {
-      console.log(err);
-    });
-    */
-
-    return this.http.get<Linha[]>(this.linhaUrl).pipe();
+    return this.http.get<Linha[]>(this.linhaUrl).pipe(
+      retry(2),
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(error);
+      })
+    );
   }
+
 }
