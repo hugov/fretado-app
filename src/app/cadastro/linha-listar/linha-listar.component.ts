@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+
 import { Linha } from '../model/linha.model';
 import { LinhaService } from '../service/linha.service';
 
@@ -16,6 +17,8 @@ export class LinhaListarComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort, { static: false }) sort: any = MatSort;
   @ViewChild(MatTable, { static: false }) table: any = MatTable<Linha>;
   
+  displayedColumns: string[] = ['id', 'codigoLinha', 'descricao', 'situacao'];
+  
   linha = {
     id: 0,
     codigoLinha: '',
@@ -26,9 +29,8 @@ export class LinhaListarComponent implements AfterViewInit, OnInit {
   linhas : Linha[] = [];
   
   dataSource = new MatTableDataSource<Linha>(this.linhas);
-  displayedColumns: string[] = ['id', 'codigoLinha', 'descricao', 'situacao'];
 
-  constructor(private linhaService: LinhaService) {
+  constructor(private linhaService: LinhaService, private cdr: ChangeDetectorRef) {
     console.log('Carregando o componente de linha')
   }
 
@@ -37,8 +39,6 @@ export class LinhaListarComponent implements AfterViewInit, OnInit {
     //this.dataSource.sort = this.sort;
     this.dataSource = new MatTableDataSource<Linha>(this.linhas);
     this.getLista()
-
-    console.log('Linha Component - ngOnInit() - Quantidade de registros:' + this.linhas)
   }
 
   ngAfterViewInit() {
@@ -63,7 +63,9 @@ export class LinhaListarComponent implements AfterViewInit, OnInit {
     this.linhaService.getLinhas().subscribe((linhas: Linha[]) => {
       this.linhas = linhas
       this.dataSource.data = linhas
-      console.table(linhas)
+
+      console.log('Linhas carregadas ' , linhas)
+
       return linhas
     })
   }

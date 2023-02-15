@@ -15,7 +15,7 @@
 
 <button mat-raised-button (click)="addLineItem()">Add</button>
 
-<table mat-table [dataSource]="dataSource" matSort>
+<mat-table [dataSource]="dataSource" matSort>
     
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
@@ -41,8 +41,6 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
-</table>
+</mat-table>
 
-<!--
 <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
--->
